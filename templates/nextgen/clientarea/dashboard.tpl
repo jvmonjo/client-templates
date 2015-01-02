@@ -3,7 +3,21 @@
 Clientarea dashboard - summary of owned services, due invoices, opened tickets
 
 *}
-
+{if $enableFeatures.news!='off' && $annoucements}
+<div id="announcements">
+{foreach from=$annoucements item=annoucement}
+<h3><a href="{$ca_url}news/view/{$annoucement.id}/{$annoucement.slug}/">{$annoucement.title}</a></h3>
+<span class="annoucement_date"><i class="icon-time"></i> {$lang.published} {$annoucement.date|dateformat:$date_format}</span>
+<p >{$annoucement.content}
+</p><div class="right">
+<div class="btn-group">
+<a href="{$ca_url}news/" class="btn btn-small">{$lang.newsarchive}</a>
+<a href="{$ca_url}news/view/{$annoucement.id}/{$annoucement.slug}/" class="btn btn-small">{$lang.readall}</a>
+</div> </div>
+<div class="clear"></div>
+{/foreach}
+</div>
+{/if}
 <div class="row dashrow">
 
 	{foreach from=$offer item=offe}

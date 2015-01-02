@@ -3,7 +3,18 @@
 Clientarea dashboard - summary of owned services, due invoices, opened tickets
 
 *}
+	{foreach from=$offer item=offe}
+	{if $offe.total>0}
+            <div class="span3 dashboardblock">
+                <div class="internal">
+                <h4><a href="{$ca_url}clientarea/services/{$offe.slug}/">{$offe.name}</a> <a href="{$ca_url}clientarea/services/{$offe.slug}/" class="counter">{$offe.total}</a></h4>
 
+                <a class="btn right btn-mini btn-primary" href="{$ca_url}clientarea/services/{$offe.slug}/">{$lang.manage}</a>
+
+                </div>
+            </div>
+	{/if}
+       {/foreach}
 <div class="row dashrow">
 
 	{foreach from=$offer item=offe}
